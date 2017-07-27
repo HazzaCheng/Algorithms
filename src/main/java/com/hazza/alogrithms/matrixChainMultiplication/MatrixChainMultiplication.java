@@ -64,4 +64,30 @@ public class MatrixChainMultiplication {
         else return "(" + printOptimalParens(s, i, s[i][j])
                 + printOptimalParens(s, s[i][j] + 1, j) + ")";
     }
+
+    //a direct top-down method recursive method with a memorized array
+    int memoizedMatrixChain(int[][] matrixs) {
+        int n = matrixs.length;
+        int[][] m = new int[n][n];
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                m[i][j] = Integer.MAX_VALUE;
+
+        return lookupChain(matrixs, m, 0, n - 1);
+    }
+
+    int lookupChain(int[][] matrixs, int[][] m, int i, int j) {
+        if (m[i][j] < Integer.MAX_VALUE) return m[i][j];
+        if (i == j) m[i][j] = 0;
+        else {
+            for (int k = i; k < j; k++) {
+                int q = lookupChain(matrixs, m, i, k) +
+                        lookupChain(matrixs, m, k + 1, j) +
+                        matrixs[i][0] * matrixs[k][1] * matrixs[j][1];
+                if (q < m[i][j]) m[i][j] = q;
+            }
+        }
+
+        return m[i][j];
+    }
 }

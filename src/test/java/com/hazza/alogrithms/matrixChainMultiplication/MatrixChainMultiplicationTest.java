@@ -56,8 +56,15 @@ public class MatrixChainMultiplicationTest {
         assertEquals(7125, res[1][4]);
     }
 
-    @Test(timeout = 1000)
+    @Test(timeout = 10000)
     public void testRandom() {
-        System.out.println(test.matrixChainOrderVal(mRandom));
+        long begin = System.currentTimeMillis();
+        int res1 = test.matrixChainOrderVal(mRandom);
+        System.out.println("Time of DP: " + (System.currentTimeMillis() - begin));
+        begin = System.currentTimeMillis();
+        int res2 = test.memoizedMatrixChain(mRandom);
+        System.out.println("Time of Memoized: " + (System.currentTimeMillis() - begin));
+
+        assertEquals(res1, res2);
     }
 }
