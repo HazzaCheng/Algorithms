@@ -5,7 +5,15 @@ package com.hazza.algorithms.rodCutting;
  * The problem of Rod Cutting using dynamic programming
  */
 public class RodCutting {
-    //a direct top-down recursive method
+
+    /**
+     * A direct top-down recursive method.
+     *
+     * @author HazzaCheng
+     * @param p the array of price
+     * @param len the length of rod
+     * @return the max of profit in all cutting schemes
+     */
     int cutRod(int[] p, int len) {
         if (len <= 0) return 0;
         else {
@@ -16,7 +24,14 @@ public class RodCutting {
         }
     }
 
-    //a direct top-down recursive method with a memorized array
+    /**
+     * A direct top-down using a recursive method with a memorized array.
+     *
+     * @author HazzaCheng
+     * @param p the array of price
+     * @param len the length of rod
+     * @return the max of profit in all cutting schemes
+     */
     int memorizedCutRod(int[] p, int len) {
         int[] r = new int[len + 1];
         for (int i = 0; i <= len; i++) r[i] = 0;
@@ -24,6 +39,15 @@ public class RodCutting {
         return memorizedCutRodAux(p, len, r);
     }
 
+    /**
+     * Calculate the max of profit when the length of rod in different values.
+     *
+     * @author HazzaCheng
+     * @param p the array of price
+     * @param len the length of rod
+     * @param r the memorized array which store the optimal value temporarily
+     * @return the max of profit when the length of rod is len
+     */
     int memorizedCutRodAux(int[] p, int len, int[] r) {
         if (len == 0) return 0;
         if (r[len] > 0) return r[len];
@@ -36,7 +60,14 @@ public class RodCutting {
         }
     }
 
-    //a direct down-top method with a memoized array, not a recursive
+    /**
+     * A direct down-top method with a memoized array, not a recursive, using DP.
+     *
+     * @author HazzaCheng
+     * @param p the array of price
+     * @param len the length of rod
+     * @return the max of profit in all cutting schemes
+     */
     int bottem2upCutRod(int[] p, int len) {
         int[] r = new int[len + 1];
         r[0] = 0;
@@ -51,6 +82,17 @@ public class RodCutting {
     }
 
     //same as above, but recode the first cutted rod
+
+    /**
+     * A direct down-top method with a memoized array, not a recursive, using DP,
+     * also record the first cutted rod.
+     *
+     * @author HazzaCheng
+     * @param p the array of price
+     * @param len the length of rod
+     * @param s the array of the first cutted rod
+     * @return the max of profit in all cutting schemes
+     */
     int bottem2upCutRod(int[] p, int len, int[] s) {
         int[] r = new int[len + 1];
         r[0] = 0;
@@ -68,6 +110,14 @@ public class RodCutting {
         return r[len];
     }
 
+    /**
+     * Print the the optimal scheme of cutting rod.
+     *
+     * @author HazzaCheng
+     * @param p the array of price
+     * @param len the length of rod
+     * @return the max of profit in all cutting schemes
+     */
     int printCutRod(int[] p, int len) {
         int[] s = new int[len + 1];
         int profit = bottem2upCutRod(p, len, s);
