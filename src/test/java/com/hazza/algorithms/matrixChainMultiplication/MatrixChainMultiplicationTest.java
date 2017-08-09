@@ -1,4 +1,4 @@
-package com.hazza.alogrithms.matrixChainMultiplication;
+package com.hazza.algorithms.matrixChainMultiplication;
 
 import org.junit.Before;
 import org.junit.Test;

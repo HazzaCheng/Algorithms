@@ -1,8 +1,5 @@
-package com.hazza.longestCommonSubsequence;
+package com.hazza.algorithms.longestCommonSubsequence;
 
-import cucumber.api.java.it.Ma;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.lang3.RandomUtils;
 import org.junit.Before;
 import org.junit.Test;
 

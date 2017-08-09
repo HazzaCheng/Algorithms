@@ -1,4 +1,4 @@
-package com.hazza.longestCommonSubsequence;
+package com.hazza.algorithms.longestCommonSubsequence;
 
 /**
  * Created by hazza on 7/27/17.
@@ -15,7 +15,7 @@ public class LongestCommonSubsequence {
      * @param y a char sequence
      * @return the length of the LCS of x and y
      */
-    public int getLCSlen(char[] x, char[] y) {
+    int getLCSlen(char[] x, char[] y) {
         int lenX = x.length, lenY = y.length;
         int[][] c = new int[lenX + 1][lenY + 1];
         int[][] b = new int[lenX + 1][lenY + 1];

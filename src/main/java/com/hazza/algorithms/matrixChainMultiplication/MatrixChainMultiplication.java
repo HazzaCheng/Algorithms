@@ -1,4 +1,4 @@
-package com.hazza.alogrithms.matrixChainMultiplication;
+package com.hazza.algorithms.matrixChainMultiplication;
 
 /**
  * Created by hazza on 7/24/17.
