@@ -4,7 +4,7 @@ package com.hazza.algorithms.optimalBinarySearchTree;
  * Created with IntelliJ IDEA.
  *
  * Description: The problem of calculate the cost of searching BST
- * User: HazzaCheng
+ * Author: HazzaCheng
  * Contact: hazzacheng@gmail.com
  * Date: 2017-08-08
  * Time: 9:02 PM
