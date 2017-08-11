@@ -11,6 +11,7 @@ package com.hazza.algorithms.optimalBinarySearchTree;
  */
 public class OptimalBinarySearchTree {
 
+    // solution 1
     /**
      * Get the minimum search cost in BST and restore roots of BST,
      * and print the tree in the end.
