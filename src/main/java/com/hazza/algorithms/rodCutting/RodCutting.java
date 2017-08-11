@@ -6,6 +6,7 @@ package com.hazza.algorithms.rodCutting;
  */
 public class RodCutting {
 
+    // solution 1
     /**
      * A direct top-down recursive method.
      *
@@ -24,6 +25,7 @@ public class RodCutting {
         }
     }
 
+    // solution 2
     /**
      * A direct top-down using a recursive method with a memorized array.
      *
@@ -60,6 +62,7 @@ public class RodCutting {
         }
     }
 
+    // solution 3
     /**
      * A direct down-top method with a memoized array, not a recursive, using DP.
      *
@@ -81,8 +84,7 @@ public class RodCutting {
         return r[len];
     }
 
-    //same as above, but recode the first cutted rod
-
+    // solution 4
     /**
      * A direct down-top method with a memoized array, not a recursive, using DP,
      * also record the first cutted rod.
