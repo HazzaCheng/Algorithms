@@ -6,6 +6,7 @@ package com.hazza.algorithms.longestCommonSubsequence;
  */
 public class LongestCommonSubsequence {
 
+    // Solution 1
     /**
      * A direct down-top method, return the length  of the LCS of two char sequences,
      * using DP, also print the LCS.
@@ -48,7 +49,7 @@ public class LongestCommonSubsequence {
     }
 
     /**
-     * print the LCS with extra space, recursively
+     * Print the LCS with extra space, recursively
      *
      * @param b the array of pointers to the optimal schemes
      * @param x a sequence
@@ -65,8 +66,9 @@ public class LongestCommonSubsequence {
         else printLCS(b, x, i, j - 1);
     }
 
+    // solution 2
     /**
-     * print the LCS without extra space, recursively
+     * Print the LCS without extra space, recursively
      *
      * @param c the array of
      * @param x a sequence
