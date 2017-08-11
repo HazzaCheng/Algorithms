@@ -7,6 +7,7 @@ package com.hazza.algorithms.matrixChainMultiplication;
 
 public class MatrixChainMultiplication {
 
+    // solution 1
     /**
      * A direct down-top method, just return the best value,
      * also print the optimal parentheses scheme,
@@ -74,8 +75,6 @@ public class MatrixChainMultiplication {
         return m;
     }
 
-    // print the optimal parentheses scheme
-
     /**
      * Print the optimal parentheses scheme, recursively.
      *
@@ -91,8 +90,7 @@ public class MatrixChainMultiplication {
                 + printOptimalParens(s, s[i][j] + 1, j) + ")";
     }
 
-    //a direct top-down method recursive method with a memorized array
-
+    // solution 2
     /**
      * A direct top-down method using a recursive method with a memorized array.
      *
