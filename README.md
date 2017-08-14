@@ -6,3 +6,4 @@ Record some algorithms and data structures
 - `com.hazza.alogrithms.longestCommonSubsequence`: Longest-common-subsequence problem (solved by dynamic programming)
 - `com.hazza.alogrithms.optimalBinarySearchTree`: Optimal Binary Search Tree(Huffman Tree) problem (solved by dynamic programming)
 - `com.hazza.alogrithms.activitySelector`: Activity-selection problem (solved by greedy)
+- `com.hazza.alogrithms.huffmanCode`: Huffman Code problem (solved by greedy)
