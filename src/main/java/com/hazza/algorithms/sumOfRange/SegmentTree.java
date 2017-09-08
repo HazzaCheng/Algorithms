@@ -137,9 +137,6 @@ class SegmentTree
         return getSumUtil(0, n - 1, qs, qe, 0);
     }
 
-    // A recursive function that constructs Segment Tree for array[ss..se].
-    // si is index of current node in segment tree st
-
     /**
      * A recursive function that constructs Segment Tree for array[ss..se].
      * si is index of current node in segment tree st.
