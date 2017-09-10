@@ -19,7 +19,7 @@ public class SegmentTreeTest {
     public void testTree() {
         int arr[] = {1, 3, 5, 7, 9, 11};
         int n = arr.length;
-        test = new SegmentTree(arr, n);
+        test = new SegmentTree(arr);
 
         System.out.println("Sum of values in given range = " + test.getSum(n, 1, 3));
         assertEquals(15, test.getSum(n, 1, 3));

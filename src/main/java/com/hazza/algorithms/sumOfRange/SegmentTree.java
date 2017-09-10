@@ -17,11 +17,10 @@ class SegmentTree
      * This constructor  allocates memory for segment tree and calls
      * constructSTUtil() to  fill the allocated memory.
      * @param arr the input array
-     * @param n the amount of numbers in array
      */
-    SegmentTree(int arr[], int n)
+    SegmentTree(int arr[])
     {
-        // Allocate memory for segment tree
+        int n = arr.length;
         //Height of segment tree
         int x = (int) (Math.ceil(Math.log(n) / Math.log(2)));
 
