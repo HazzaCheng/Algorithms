@@ -16,7 +16,7 @@ class SegmentTree
      * Constructor to construct segment tree from given array.
      * This constructor  allocates memory for segment tree and calls
      * constructSTUtil() to  fill the allocated memory.
-     * @param arr
+     * @param arr the input array
      * @param n the amount of numbers in array
      */
     SegmentTree(int arr[], int n)
@@ -162,24 +162,4 @@ class SegmentTree
         return st[si];
     }
 
-    public static void main(String args[])
-    {
-        int arr[] = {1, 3, 5, 7, 9, 11};
-        int n = arr.length;
-        SegmentTree  tree = new SegmentTree(arr, n);
-
-        // Build segment tree from given array
-
-        // Print sum of values in array from index 1 to 3
-        System.out.println("Sum of values in given range = " +
-                tree.getSum(n, 1, 3));
-
-        // Update: set arr[1] = 10 and update corresponding segment
-        // tree nodes
-        tree.updateValue(arr, 1, 10);
-
-        // Find sum after the value is updated
-        System.out.println("Updated sum of values in given range = " +
-                tree.getSum(n, 1, 3));
-    }
 }
