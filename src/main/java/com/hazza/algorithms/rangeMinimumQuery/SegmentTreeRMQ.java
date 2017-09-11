@@ -11,7 +11,7 @@ package com.hazza.algorithms.rangeMinimumQuery;
 
 class SegmentTreeRMQ
 {
-    int st[]; //array to store segment tree
+    private int st[]; //array to store segment tree
 
     /**
      * A utility function to get minimum of two numbers
@@ -19,7 +19,7 @@ class SegmentTreeRMQ
      * @param y an integer
      * @return the smaller integer
      */
-    int minVal(int x, int y) {
+    private int minVal(int x, int y) {
         return (x < y) ? x : y;
     }
 
@@ -29,7 +29,7 @@ class SegmentTreeRMQ
      * @param e the ending index
      * @return the middle index
      */
-    int getMid(int s, int e) {
+    private int getMid(int s, int e) {
         return (s + e) / 2;
     }
 
@@ -44,7 +44,7 @@ class SegmentTreeRMQ
      * @param index index of current node in the segment tree
      * @return the minimum value
      */
-    int RMQUtil(int ss, int se, int qs, int qe, int index)
+    private int RMQUtil(int ss, int se, int qs, int qe, int index)
     {
         // If segment of this node is a part of given range, then
         // return the min of the segment
@@ -89,7 +89,7 @@ class SegmentTreeRMQ
      * @param si index of current node in the segment tree. Initially 0 is passed as root is always at index 0
      * @return
      */
-    int constructSTUtil(int arr[], int ss, int se, int si)
+    private int constructSTUtil(int arr[], int ss, int se, int si)
     {
         // If there is one element in array, store it in current node of segment tree and return
         if (ss == se) {
