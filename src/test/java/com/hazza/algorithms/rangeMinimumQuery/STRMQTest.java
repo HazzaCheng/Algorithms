@@ -1,6 +1,5 @@
 package com.hazza.algorithms.rangeMinimumQuery;
 
-import cucumber.api.java.it.Ma;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,7 +21,7 @@ public class STRMQTest {
     private int[] creatRandomNums(int len) {
         int[] res = new int[len];
         Random random = new Random();
-        for (int i = 0; i < len; i++) res[i] = random.nextInt(100);
+        for (int i = 0; i < len; i++) res[i] = random.nextInt(100) + 1;
         return res;
     }
 
