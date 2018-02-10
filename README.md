@@ -11,3 +11,4 @@ Record some algorithms and data structures
 - `com.hazza.algorithms.rangeMinimumQuery`: Range Minimum Query problem (solved by segment tree and sparse table)
 - `com.hazza.algorithms.morrisTraversal`: Morris Traversal Problem
 - `com.hazza.algorithms.maximumSubarray`: Maximum Subarray Problem(solved by divide-and-conquer and DP)
+- `com.hazza.algorithms.fastMatrixExponentiation`: Some problems for Fast Matrix Exponentiation.
