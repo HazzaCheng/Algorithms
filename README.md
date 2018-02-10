@@ -8,3 +8,4 @@ Record some algorithms and data structures
 - `com.hazza.algorithms.sparseTable`: Some problems for Sparse Table.
 - `com.hazza.algorithms.morrisTraversal`: Some Problems for Morris Traversal.
 - `com.hazza.algorithms.fastMatrixExponentiation`: Some problems for Fast Matrix Exponentiation.
+- `com.hazza.algorithms.kruskal`: Some problems for Kruskal's Algorithm.

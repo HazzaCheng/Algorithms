@@ -1,7 +1,6 @@
 package com.hazza.algorithms.sparseTable;
 
 import com.hazza.algorithms.segmentTree.SegmentTreeRMQ;
-import com.hazza.algorithms.sparseTable.STRMQ;
 import org.junit.Before;
 import org.junit.Test;
 

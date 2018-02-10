@@ -9,7 +9,7 @@ package com.hazza.algorithms.segmentTree;
  * Time: 4:20 PM
  */
 
-class SegmentTreeRMQ
+public class SegmentTreeRMQ
 {
     private int st[]; //array to store segment tree
 
@@ -69,7 +69,7 @@ class SegmentTreeRMQ
      * @param qe ending indexes of query range
      * @return the minimum value
      */
-    int RMQ(int n, int qs, int qe)
+    public int RMQ(int n, int qs, int qe)
     {
         // Check for erroneous input values
         if (qs < 0 || qe > n - 1 || qs > qe) {
@@ -111,7 +111,7 @@ class SegmentTreeRMQ
      * fill the allocated memory
      * @param arr the input array
      */
-    void constructST(int arr[])
+    public void constructST(int arr[])
     {
         int n = arr.length;
         //Height of segment tree
