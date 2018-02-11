@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  * Created with IntelliJ IDEA.
- * Description: Create a minimum spanning tree from the input.
+ * Description: Create a minimum spanning tree from the input using Kruskal's Algorithm.
  * User: HazzaCheng
  * Contact: hazzacheng@gmail.com
  * Date: 18-2-10
