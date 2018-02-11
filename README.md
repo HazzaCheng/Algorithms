@@ -9,3 +9,4 @@ Record some algorithms and data structures
 - `com.hazza.algorithms.morrisTraversal`: Some Problems for Morris Traversal.
 - `com.hazza.algorithms.fastMatrixExponentiation`: Some problems for Fast Matrix Exponentiation.
 - `com.hazza.algorithms.kruskal`: Some problems for Kruskal's Algorithm.
+- `com.hazza.algorithms.prim`: Some problems for Prim's Algorithm.
