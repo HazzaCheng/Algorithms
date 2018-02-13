@@ -48,6 +48,11 @@ public class CreateMST {
             matrix[edges[i].x][edges[i].y] = matrix[edges[i].y][edges[i].x] = edges[i].weight;
     }
 
+    /**
+     * Get the lowest weight to vertex k and set the path.
+     * @param n The number of vertices.
+     * @param k The vertex k.
+     */
     private static void getLowestWeight(int n, int k) {
         for (int i = 1; i <= n ; i++) {
             if (lowWeight[i] > matrix[i][k]) {
