@@ -11,3 +11,4 @@ Record some algorithms and data structures
 - `com.hazza.algorithms.kruskal`: Some problems for Kruskal's Algorithm.
 - `com.hazza.algorithms.prim`: Some problems for Prim's Algorithm.
 - `com.hazza.algorithms.bellmanFord`: Some problems for Bellman-Ford's Algorithm.
+- `com.hazza.algorithms.SPFA`: Some problems for SPFA Algorithm.
