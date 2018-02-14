@@ -1,15 +1,14 @@
-package com.hazza.algorithms.SPFA;
+package com.hazza.algorithms.BellmanFord;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.Queue;
 
 /**
  * Created with IntelliJ IDEA.
- * Description: Find the shortest path from the source vertex using SPFA Algorithm.
+ * Description: Find the shortest path from the source vertex using Bellman-Ford's Algorithm.
  * User: HazzaCheng
  * Contact: hazzacheng@gmail.com
- * Date: 18-2-14
+ * Date: 18-2-12
  * Time: 9:05 PM
  */
 public class FindShortestPath {
@@ -17,12 +16,6 @@ public class FindShortestPath {
     private static int[] dist;
     // path[i] => the predecessor vertex of the vertex i
     private static int[] path;
-    // inPath[i] => determine vertex i whether in the path
-    private static boolean[] inPath;
-    // enqueueNum[i] => the nnumber of enqueue for vertex i
-    private static int[] enqueNum;
-    // adjacency matrix of weight
-    private static int[][] matrix;
     // the unreachable distance
     private static int INF = Integer.MAX_VALUE - 1000; // prevent integer out of bounds
 
@@ -34,34 +27,15 @@ public class FindShortestPath {
     /**
      * Initialized the arrays.
      * @param m The number of vertices.
-     * @param source The source vertex.
-     * @param edges The edges.
      */
-    private static void init(int m, int source, Edge[] edges) {
+    private static void init(int m) {
         dist = new int[m + 1];
         path = new int[m + 1];
-        inPath = new boolean[m + 1];
-        enqueNum = new int[m + 1];
-        matrix = new int[m + 1][m + 1];
 
-        // create the adjacency matrix of weight
         for (int i = 1; i <= m; i++) {
-            for (int j = 1; j <= m; j++) matrix[i][j] = INF;
-            matrix[i][i] = 0;
-        }
-        int len = edges.length;
-        for (int i = 0; i < len; i++)
-            matrix[edges[i].x][edges[i].y] = edges[i].weight;
-
-        // initialize the dist array for source
-        for (int i = 1; i <= m; i++) {
-            inPath[i] = false;
             dist[i] = INF;
-            path[i] = source;
-            enqueNum[i] = 0;
+            path[i] = i;
         }
-        inPath[source] = true;
-        dist[source] = 0;
     }
 
     /**
@@ -71,31 +45,28 @@ public class FindShortestPath {
      * @param edges The edges.
      */
     public static boolean bellmanFord(int m, int source, Edge[] edges) {
-        init(m, source, edges);
-        Queue<Integer> queue = new ArrayDeque<>();
+        init(m);
+        int edgesNum = edges.length;
+        dist[source] = 0;
 
-        queue.add(source);
-        ++enqueNum[source];
-        while (!queue.isEmpty()) {
-            int u = queue.poll();
-            inPath[u] = false;
-            for (int v = 1; v <= m; v++) {
-                if (matrix[u][v] < INF) {
-                    if (dist[u] + matrix[u][v] < dist[v]) {
-                        dist[v] = dist[u] + matrix[u][v];
-                        path[v] = u;
-                        if (!inPath[v]) {
-                            queue.add(v);
-                            ++enqueNum[v];
-                            if (enqueNum[v] >= m) return false;
-                            inPath[v] = true;
-                        }
-                    }
+        // relax for m-1 times at most
+        for (int i = 0; i < m - 1; i++) {
+            boolean flag = false;
+            for (int j = 0; j < edgesNum; j++) {
+                if (dist[edges[j].x] + edges[j].weight < dist[edges[j].y]) {
+                    dist[edges[j].y] = dist[edges[j].x] + edges[j].weight;
+                    path[edges[j].y] = edges[j].x;
+                    flag = true;
                 }
             }
-
+            if (!flag) break;
         }
 
+        // check the negative cycles
+        for (int i = 0; i < edgesNum; i++)
+            if (dist[edges[i].x] + edges[i].weight < dist[edges[i].y])
+                return false;
+//                throw new RuntimeException("These edges contain negative cycles!");
         return true;
     }
 

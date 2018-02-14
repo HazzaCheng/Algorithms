@@ -1,16 +1,15 @@
-package com.hazza.algorithms.SPFA;
+package com.hazza.algorithms.Dijkstra;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.Queue;
 
 /**
  * Created with IntelliJ IDEA.
- * Description: Find the shortest path from the source vertex using SPFA Algorithm.
+ * Description: Find the shortest path from the source vertex using Dijkstra's Algorithm.
  * User: HazzaCheng
  * Contact: hazzacheng@gmail.com
- * Date: 18-2-14
- * Time: 9:05 PM
+ * Date: 18-2-13
+ * Time: 19:05 PM
  */
 public class FindShortestPath {
     // dist[i] => the shortest distance form source vertex to vertex i
@@ -19,12 +18,10 @@ public class FindShortestPath {
     private static int[] path;
     // inPath[i] => determine vertex i whether in the path
     private static boolean[] inPath;
-    // enqueueNum[i] => the nnumber of enqueue for vertex i
-    private static int[] enqueNum;
-    // adjacency matrix of weight
-    private static int[][] matrix;
     // the unreachable distance
     private static int INF = Integer.MAX_VALUE - 1000; // prevent integer out of bounds
+    // adjacency matrix of weight
+    private static int[][] matrix;
 
     /**
      * Util class, cannot be instantiated.
@@ -41,7 +38,6 @@ public class FindShortestPath {
         dist = new int[m + 1];
         path = new int[m + 1];
         inPath = new boolean[m + 1];
-        enqueNum = new int[m + 1];
         matrix = new int[m + 1][m + 1];
 
         // create the adjacency matrix of weight
@@ -56,12 +52,26 @@ public class FindShortestPath {
         // initialize the dist array for source
         for (int i = 1; i <= m; i++) {
             inPath[i] = false;
-            dist[i] = INF;
+            dist[i] = matrix[source][i];
             path[i] = source;
-            enqueNum[i] = 0;
         }
         inPath[source] = true;
-        dist[source] = 0;
+    }
+
+    /**
+     * Get the lowest weight to vertex k and set the path.
+     * @param n The number of vertices.
+     * @param k The vertex k.
+     */
+    private static void getLowestWeight(int n, int k) {
+        for (int i = 1; i <= n ; i++) {
+           if (matrix[k][i] < INF) {
+               if (dist[i] > dist[k] + matrix[k][i]) {
+                   dist[i] = dist[k] + matrix[k][i];
+                   path[i] = k;
+               }
+           }
+        }
     }
 
     /**
@@ -70,33 +80,27 @@ public class FindShortestPath {
      * @param source The source vertex.
      * @param edges The edges.
      */
-    public static boolean bellmanFord(int m, int source, Edge[] edges) {
+    public static void dijkstra(int m, int source, Edge[] edges) {
         init(m, source, edges);
-        Queue<Integer> queue = new ArrayDeque<>();
 
-        queue.add(source);
-        ++enqueNum[source];
-        while (!queue.isEmpty()) {
-            int u = queue.poll();
-            inPath[u] = false;
-            for (int v = 1; v <= m; v++) {
-                if (matrix[u][v] < INF) {
-                    if (dist[u] + matrix[u][v] < dist[v]) {
-                        dist[v] = dist[u] + matrix[u][v];
-                        path[v] = u;
-                        if (!inPath[v]) {
-                            queue.add(v);
-                            ++enqueNum[v];
-                            if (enqueNum[v] >= m) return false;
-                            inPath[v] = true;
-                        }
-                    }
+        int edgesCount = 0;
+        while (edgesCount != m - 1) {
+            int k = 0, min = INF;
+            for (int i = 1; i <= m; i++) {
+                if (!inPath[i] && min > dist[i]) {
+                    min = dist[i];
+                    k = i;
                 }
             }
-
+            if (k == 0) break;
+            inPath[k] = true;
+            ++edgesCount;
+            getLowestWeight(m, k);
         }
 
-        return true;
+        // if edgesCount < m - 1, the undirected graph cannot be connected
+        if (edgesCount < m - 1) throw new RuntimeException("These edges cannot get a path!");
+
     }
 
     /**
