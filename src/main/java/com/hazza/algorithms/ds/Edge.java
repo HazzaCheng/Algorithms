@@ -1,4 +1,4 @@
-package com.hazza.algorithms.Kruskal;
+package com.hazza.algorithms.ds;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,8 +9,8 @@ package com.hazza.algorithms.Kruskal;
  * Time: 9:05 PM
  */
 public class Edge implements Comparable<Edge> {
-    int x, y;   // two points
-    int weight; // the weight of this edge
+    public int x, y;   // two points
+    public int weight; // the weight of this edge
 
     public Edge(int x, int y, int weight) {
         this.x = x;

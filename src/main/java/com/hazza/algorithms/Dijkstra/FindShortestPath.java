@@ -1,5 +1,7 @@
 package com.hazza.algorithms.Dijkstra;
 
+import com.hazza.algorithms.ds.Edge;
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 

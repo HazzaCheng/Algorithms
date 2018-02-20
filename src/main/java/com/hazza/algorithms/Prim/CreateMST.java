@@ -1,5 +1,7 @@
 package com.hazza.algorithms.Prim;
 
+import com.hazza.algorithms.ds.Edge;
+
 /**
  * Created with IntelliJ IDEA.
  * Description: Create a minimum spanning tree from the input using Prim's Algorithm.

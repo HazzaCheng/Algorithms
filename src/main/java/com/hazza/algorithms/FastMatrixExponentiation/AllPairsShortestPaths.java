@@ -1,5 +1,7 @@
 package com.hazza.algorithms.FastMatrixExponentiation;
 
+import com.hazza.algorithms.ds.Edge;
+
 /**
  * Created with IntelliJ IDEA.
  * Description: Find all pairs shortest paths using DP and Fast Matrix Exponentiation.

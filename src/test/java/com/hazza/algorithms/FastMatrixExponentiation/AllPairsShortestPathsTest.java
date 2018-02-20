@@ -1,7 +1,6 @@
 package com.hazza.algorithms.FastMatrixExponentiation;
 
-import com.hazza.algorithms.FastMatrixExponentiation.AllPairsShortestPaths;
-import com.hazza.algorithms.FastMatrixExponentiation.Edge;
+import com.hazza.algorithms.ds.Edge;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;

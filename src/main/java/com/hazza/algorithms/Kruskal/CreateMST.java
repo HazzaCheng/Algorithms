@@ -1,5 +1,7 @@
 package com.hazza.algorithms.Kruskal;
 
+import com.hazza.algorithms.ds.Edge;
+
 import java.util.Arrays;
 
 /**

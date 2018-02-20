@@ -12,3 +12,4 @@ Record some algorithms and data structures
 - `com.hazza.algorithms.Prim`: Some problems for Prim's Algorithm.
 - `com.hazza.algorithms.BellmanFord`: Some problems for Bellman-Ford's Algorithm.
 - `com.hazza.algorithms.SPFA`: Some problems for SPFA Algorithm.
+- `com.hazza.algorithms.FloydWarshall`: Some problems for Floyd-Warshall Algorithm.

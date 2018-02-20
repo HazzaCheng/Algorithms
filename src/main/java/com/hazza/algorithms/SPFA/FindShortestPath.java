@@ -1,5 +1,7 @@
 package com.hazza.algorithms.SPFA;
 
+import com.hazza.algorithms.ds.Edge;
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Queue;

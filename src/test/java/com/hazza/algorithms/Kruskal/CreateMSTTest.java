@@ -1,5 +1,6 @@
 package com.hazza.algorithms.Kruskal;
 
+import com.hazza.algorithms.ds.Edge;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
