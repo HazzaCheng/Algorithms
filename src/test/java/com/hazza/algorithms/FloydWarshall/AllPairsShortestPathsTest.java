@@ -41,7 +41,7 @@ public class AllPairsShortestPathsTest {
 
     @Test
     public void testRight() {
-        int[][] expeceted1 = AllPairsShortestPaths.getAllPairsShortestPaths(5, edges);
+        int[][] expeceted1 = AllPairsShortestPaths.floydWarshall(5, edges);
         int[][] expeceted2 = com.hazza.algorithms.FastMatrixExponentiation.AllPairsShortestPaths.showAllPairsShortestPaths_fast(5, edges);
         assertEquals(-4, expeceted1[2][3]);
         assertEquals(4, expeceted1[3][2]);
@@ -53,7 +53,7 @@ public class AllPairsShortestPathsTest {
 
     @Test
     public void testPrintPath() {
-        int[][] expeceted = AllPairsShortestPaths.getAllPairsShortestPaths(5, edges);
+        int[][] expeceted = AllPairsShortestPaths.floydWarshall(5, edges);
         int[][] paths = AllPairsShortestPaths.getExactPaths();
         assertEquals(4, paths[2][1]);
         assertEquals(2, paths[3][4]);
@@ -66,7 +66,7 @@ public class AllPairsShortestPathsTest {
     public void testTransitiveClosure() {
         int m = 4;
         boolean[][] connected = AllPairsShortestPaths.transitiveClosure(m, edges1);
-        int[][] expected = AllPairsShortestPaths.getAllPairsShortestPaths(m, edges1);
+        int[][] expected = AllPairsShortestPaths.floydWarshall(m, edges1);
 
         for (int i = 1; i <= m; i++)
             for (int j = 1; j <= m; j++)

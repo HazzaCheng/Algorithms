@@ -56,7 +56,7 @@ public class AllPairsShortestPaths {
      * @param edges The edges.
      * @return The shortest paths array.
      */
-    public static int[][] getAllPairsShortestPaths(int m, Edge[] edges) {
+    public static int[][] floydWarshall(int m, Edge[] edges) {
         init(m, edges);
         int[][] weights = matrix;
 
