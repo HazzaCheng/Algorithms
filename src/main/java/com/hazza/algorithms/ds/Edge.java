@@ -18,6 +18,10 @@ public class Edge implements Comparable<Edge> {
         this.weight = weight;
     }
 
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
     @Override
     public int compareTo(Edge edge) {
         return this.weight - edge.weight;
