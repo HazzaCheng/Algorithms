@@ -1,6 +1,5 @@
 package com.hazza.algorithms.Sort;
 
-import cucumber.api.java.it.Ma;
 import org.junit.Test;
 
 import java.util.*;
@@ -19,7 +18,7 @@ import static junit.framework.TestCase.assertEquals;
 public class MySortTest {
 
 
-    public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
+    private static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
         Map<K, V> result = new LinkedHashMap<>();
         Stream<Map.Entry<K, V>> st = map.entrySet().stream();
 
@@ -52,7 +51,7 @@ public class MySortTest {
     public void testSort() {
         Map<String, Long> map = new HashMap<>();
         long time;
-        int n = 300000;
+        int n = 100000;
         int[] nums = getRandomNums(n);
         int[] temp;
 
@@ -92,6 +91,12 @@ public class MySortTest {
         time = System.currentTimeMillis();
         MySort.quickSort(temp, 0, n - 1);
         map.put("Quick sort", System.currentTimeMillis() - time);
+        assertEquals(true, isSorted(temp));
+
+        temp = nums.clone();
+        time = System.currentTimeMillis();
+        MySort.heapSort(temp);
+        map.put("Heap sort", System.currentTimeMillis() - time);
         assertEquals(true, isSorted(temp));
 
         Map<String, Long> res = sortByValue(map);

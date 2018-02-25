@@ -133,7 +133,7 @@ public class MySort {
      * @param right The right index.
      * @return The split index.
      */
-    public static int quickPartition(int[] nums, int left, int right) {
+    private static int quickPartition(int[] nums, int left, int right) {
         int spiltIndex = left;
 
         for (int i = left + 1; i <= right; i++) {
@@ -161,4 +161,47 @@ public class MySort {
         }
     }
 
+    /**
+     * Make a node meet the rule of the max heap.
+     * @param nums The input array.
+     * @param i The index of the node.
+     * @param heapSize The number of numbers needed to be sorted.
+
+     */
+    private static void maxHeapify(int[] nums, int i, int heapSize) {
+        int l = 2 * i + 1;
+        int r = 2 * i + 2;
+        int max = i;
+
+        if (l < heapSize && nums[l] > nums[max]) max = l;
+        if (r < heapSize && nums[r] > nums[max]) max = r;
+        if (max != i) {
+            swap(nums, max, i);
+            maxHeapify(nums, max, heapSize);
+        }
+    }
+
+    /**
+     * Build a max heap.
+     * @param nums The input array.
+     * @param heapSize The number of numbers needed to be sorted.
+     */
+    private static void buildMaxHeap(int[] nums, int heapSize) {
+        int last = heapSize / 2 - 1;
+        for (int i = last; i >= 0; i--) maxHeapify(nums, i, heapSize);
+    }
+
+    /**
+     * Heap sort.
+     * @param nums The input array.
+     */
+    public static void heapSort(int[] nums) {
+        int heapSize = nums.length;
+        buildMaxHeap(nums, heapSize);
+        while (heapSize > 1) {
+            swap(nums, 0, heapSize - 1);
+            --heapSize;
+            maxHeapify(nums, 0, heapSize);
+        }
+    }
 }
