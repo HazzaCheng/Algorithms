@@ -21,7 +21,7 @@ public class FindShortestPath {
     private static int[] path;
     // inPath[i] => determine vertex i whether in the path
     private static boolean[] inPath;
-    // enqueueNum[i] => the nnumber of enqueue for vertex i
+    // enqueueNum[i] => the number of enqueue for vertex i
     private static int[] enqueNum;
     // adjacency matrix of weight
     private static int[][] matrix;
@@ -72,7 +72,7 @@ public class FindShortestPath {
      * @param source The source vertex.
      * @param edges The edges.
      */
-    public static boolean bellmanFord(int m, int source, Edge[] edges) {
+    public static boolean spfa(int m, int source, Edge[] edges) {
         init(m, source, edges);
         Queue<Integer> queue = new ArrayDeque<>();
 

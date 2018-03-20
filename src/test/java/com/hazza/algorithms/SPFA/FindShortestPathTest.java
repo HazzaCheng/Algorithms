@@ -25,7 +25,7 @@ public class FindShortestPathTest {
         edges[4] = new Edge(4, 3, 1);
         edges[5] = new Edge(4, 5, 4);
 
-        assertEquals(true, FindShortestPath.bellmanFord(5, 1, edges));
+        assertEquals(true, FindShortestPath.spfa(5, 1, edges));
         assertEquals(0, FindShortestPath.getDistanceFromSource(1));
         assertEquals(3, FindShortestPath.getDistanceFromSource(2));
         assertEquals(5, FindShortestPath.getDistanceFromSource(3));
@@ -45,7 +45,7 @@ public class FindShortestPathTest {
         edges[4] = new Edge(4, 3, 1);
         edges[5] = new Edge(4, 5, 4);
 
-        assertEquals(false, FindShortestPath.bellmanFord(5, 1, edges));
+        assertEquals(false, FindShortestPath.spfa(5, 1, edges));
     }
 
 }
