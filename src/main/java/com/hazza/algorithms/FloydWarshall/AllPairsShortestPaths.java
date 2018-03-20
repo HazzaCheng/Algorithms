@@ -58,7 +58,6 @@ public class AllPairsShortestPaths {
      */
     public static int[][] floydWarshall(int m, Edge[] edges) {
         init(m, edges);
-        int[][] weights = matrix;
 
         for (int k = 1; k <= m; k++)
             for (int i = 1; i <= m; i++)
