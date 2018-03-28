@@ -72,9 +72,9 @@ public class MaximumSubarray {
      */
     int[] findMaximumSubarrayDP(int[] A) {
         int len = A.length;
-        int cur_left = 0, maxLeft = 0, maxRight = 0, temp = A[0], sumMax = A[0];
+        int cur_left = 0, maxLeft = 0, maxRight = 0, temp = 0, sumMax = 0;
 
-        for (int i = 1; i < len; ++i) {
+        for (int i = 0; i < len; ++i) {
             temp += A[i];
             if (temp < 0) {
                 temp = 0;
@@ -85,6 +85,20 @@ public class MaximumSubarray {
                 maxLeft = cur_left;
                 maxRight = i;
             }
+        }
+
+        if (sumMax == 0) {
+            int curMax = A[0];
+            maxLeft = 0;
+            maxRight = 0;
+            for (int i = 1; i < len; i++) {
+                if (curMax < A[i]) {
+                    curMax = A[i];
+                    maxLeft = i;
+                    maxRight = i;
+                }
+            }
+            sumMax = curMax;
         }
 
         return new int[]{maxLeft, maxRight, sumMax};

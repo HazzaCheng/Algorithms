@@ -45,6 +45,13 @@ public class MaximumSubarrayTest {
         int[] res = test.findMaximumSubarrayDP(A);
 
         assertEquals(Arrays.toString(res), Arrays.toString(expected));
+
+        A = new int[]{-2, -1 , -3};
+
+        expected = new int[]{1, 1, -1};
+        res = test.findMaximumSubarrayDP(A);
+
+        assertEquals(Arrays.toString(res), Arrays.toString(expected));
     }
 
     @Test
