@@ -14,3 +14,4 @@ Record some algorithms and data structures
 - `com.hazza.algorithms.SPFA`: Some problems for SPFA Algorithm.
 - `com.hazza.algorithms.FloydWarshall`: Some problems for Floyd-Warshall Algorithm.
 - `com.hazza.algorithms.Johnson`: Some problems for Johnson's Algorithm.
+ `com.hazza.algorithms.KMP`: Some problems for KMP Algorithm.
