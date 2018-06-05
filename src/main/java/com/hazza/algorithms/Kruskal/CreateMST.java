@@ -42,7 +42,9 @@ public class CreateMST {
      */
     private static int findInTree(int x) {
         int root = x;
-        while (x != node[x]) x = node[x];
+        while (root != node[root]) {
+            root = node[root];
+        }
         while (x != root) {
             int temp = node[x];
             node[x] = root;
