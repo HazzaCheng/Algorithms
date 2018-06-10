@@ -16,3 +16,4 @@ Record some algorithms and data structures
 - `com.hazza.algorithms.graph.Johnson`: Some problems for Johnson's Algorithm.
 - `com.hazza.algorithms.string.KMP`: Some problems for KMP Algorithm.
 - `com.hazza.algorithms.random.SnowFlake`: Implements for SnowFlake Algorithm.
+- `com.hazza.algorithms.graph.EdmondsKarp`: Maximum flow problem for Floyd-Warshall Algorithm.
