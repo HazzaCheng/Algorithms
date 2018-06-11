@@ -54,13 +54,13 @@ public class MaxFlow {
         for (int[] edge: edgesArr) {
             edges[i++] = new FlowEdge(edge[0], edge[1], 0, edge[2]);
             // The antiparallel edge.
-            edges[i++] = new FlowEdge(edge[0], edge[1], 0, 0);
+            edges[i++] = new FlowEdge(edge[1], edge[0], 0, 0);
             List<Integer> temp;
             temp = graph.getOrDefault(edge[0], new ArrayList<>());
             temp.add(i - 2);
             graph.put(edge[0], temp);
             temp = graph.getOrDefault(edge[1], new ArrayList<>());
-            temp.add(edge[1]);
+            temp.add(i - 1);
             graph.put(edge[1], temp);
         }
     }
