@@ -45,11 +45,9 @@ public class MaximumFlow {
 
     /**
      * Add edges to the graph.
-     * @param edgesArr
+     * @param edgesArr The input edges.
      */
     private static void addEdges(int[][] edgesArr) {
-        int len = edgesArr.length;
-
         int i = 0;
         for (int[] edge: edgesArr) {
             edges[i++] = new FlowEdge(edge[0], edge[1], 0, edge[2]);
@@ -65,6 +63,15 @@ public class MaximumFlow {
         }
     }
 
+    /**
+     * Use Edmonds-Karp Algorithm to find the maximum flow.
+     * @param n The number of vertices.
+     * @param m The number of edges.
+     * @param edgesArr The input edges.
+     * @param start The source node.
+     * @param end The sink node.
+     * @return
+     */
     public static int edmondsKarp(int n, int m, int[][] edgesArr, int start, int end) {
         init(n, m, edgesArr);
 
