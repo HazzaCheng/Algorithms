@@ -12,7 +12,7 @@ import java.util.*;
  * Date: 18-6-10
  * Time: 7:27 PM
  */
-public class MaxFlow {
+public class MaximumFlow {
     private static final int INF = Integer.MAX_VALUE - 100000;
 
     /**
@@ -28,7 +28,7 @@ public class MaxFlow {
     /**
      *  Util class, cannot be instantiated.
      */
-    private MaxFlow() {}
+    private MaximumFlow() {}
 
     /**
      * The initialization.

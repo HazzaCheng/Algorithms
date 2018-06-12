@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
  * Date: 18-6-10
  * Time: 8:18 PM
  */
-public class MaxFlowTest {
+public class MaximumFlowTest {
     private int[][] edges;
 
     @Before
@@ -33,7 +33,7 @@ public class MaxFlowTest {
     @Test
     public void test() {
         int expected = 23;
-        int ans = MaxFlow.edmondsKarp(6, 9, edges, 0, 5);
+        int ans = MaximumFlow.edmondsKarp(6, 9, edges, 0, 5);
 
         assertEquals(expected, ans);
     }
