@@ -95,6 +95,28 @@ public class SkipList<T extends Comparable> {
     }
 
     /**
+     * Get the node.
+     * @param data The target.
+     * @return True or false.
+     */
+    public T get(T data) {
+        Node<T> cur = head;
+
+        for (int i = level - 1; i >= 0; i--) {
+            while (cur.forward[i] != null && cur.forward[i].data.compareTo(data) < 0) {
+                cur = cur.forward[i];
+            }
+        }
+        cur = cur.forward[0];
+
+        if (cur != null && cur.data.compareTo(data) == 0) {
+            return cur.data;
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * Insert the node into skip list.
      * @param data The inserted data.
      */

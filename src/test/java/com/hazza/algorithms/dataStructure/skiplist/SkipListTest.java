@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.Random;
 
+import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 
 /**
@@ -66,6 +67,7 @@ public class SkipListTest {
         skipList1.print();
         assertTrue(!skipList1.isFound(target));
 
+        assertEquals(nums[n / 3], skipList1.get(nums[n / 3]));
     }
 
     @Test
@@ -114,6 +116,9 @@ public class SkipListTest {
         System.out.println("\nDelete: " + target);
         skipList1.print();
         assertTrue(!skipList1.isFound(target));
+
+        assertEquals(nums[n / 3], skipList1.get(nums[n / 3]));
+
     }
     
     @Test
@@ -140,5 +145,7 @@ public class SkipListTest {
         System.out.println("\nDelete: " + target);
         skipList2.print();
         assertTrue(!skipList2.isFound(target));
+
+        assertEquals(strs[n / 3], skipList2.get(strs[n / 3]));
     }
 }
