@@ -2,15 +2,11 @@ package com.hazza.algorithms.tree.LSM;
 
 import com.hazza.algorithms.dataStructure.skiplist.SkipList;
 
-import javax.print.attribute.standard.MediaSize;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.RandomAccessFile;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
+import java.util.logging.LoggingPermission;
 import java.util.zip.CRC32;
 
 /**
@@ -29,7 +25,7 @@ public class LSMTree {
     /**
      * Split of records' location.
      */
-    private final String POSITION_SPLIT = ",";
+    private final String POSITION_SPLIT = "@";
     /**
      * The path of saving .sst files.
      */
@@ -76,7 +72,12 @@ public class LSMTree {
     }
 
     public String get(String key) {
+        Block block = getRecord(key);
+        if (block.crc == getCrc(block.time, block.keySize, block.valueSize, block.key, block.value)) {
+            return block.value;
+        }
 
+        return null;
     }
 
     public void put(String key, String value) {
@@ -94,14 +95,14 @@ public class LSMTree {
     }
 
     public void update(String key, String value) {
-
+        put(key, value);
     }
 
     public void delete(String key) {
-
+        put(key, null);
     }
 
-    private long getCrc(String time, int keySize, int valueSize, String key, String value) {
+    private long getCrc(long time, int keySize, int valueSize, String key, String value) {
         CRC32 crc32 = new CRC32();
         String str = time + " " + keySize + " " + valueSize + " " + key + " " + value;
         crc32.update(str.getBytes());
@@ -110,7 +111,7 @@ public class LSMTree {
         return crc;
     }
 
-    private String[] getRecord(String key) {
+    private Block getRecord(String key) {
         KVTuple infos = table.get(new KVTuple(key, null));
 
         if (infos == null || infos.value == null) {
@@ -120,6 +121,7 @@ public class LSMTree {
         String[] values = infos.value.split(POSITION_SPLIT);
         Block block = ioRead(values[0], Integer.parseInt(values[1]), Integer.parseInt(values[2]));
 
+        return block;
     }
 
     /**
@@ -127,7 +129,7 @@ public class LSMTree {
      * @param key
      * @return
      */
-    private String[] getRecordFromFiles(String key) {
+    private Block getRecordFromFiles(String key) {
         List<Integer> fileNums = new ArrayList<>();
         File files = new File(path);
 
@@ -140,8 +142,14 @@ public class LSMTree {
         Collections.sort(fileNums);
         int n = fileNums.size();
         for (int i = n - 1; i >= 0; i--) {
-
+            String fileName = path + "\\" + fileNums.get(i) + ".sst";
+            Block block = getRecordFromFile(key, fileName);
+            if (block != null) {
+                return block;
+            }
         }
+
+        return null;
     }
 
     /**
@@ -150,8 +158,36 @@ public class LSMTree {
      * @param fileName
      * @return
      */
-    private String[] getRecordFromFile(String key, String fileName) {
+    private Block getRecordFromFile(String key, String fileName) {
+        File file = new File(fileName);
 
+        try (RandomAccessFile raf = new RandomAccessFile(file, "rb")) {
+            long len = raf.length();
+            long start = raf.getFilePointer();
+            long nextend = start + len - 1;
+            String line;
+            raf.seek(nextend);
+            int c = -1;
+            while (nextend > start) {
+                c = raf.read();
+                if (c == Block.BLOCK_SPLIT) {
+                    line = raf.readLine();
+                    if (line != null) {
+                        String[] attrs = line.split(ATTRIBUTE_SPLIT);
+                        if (attrs[4].equals(key)) {
+                            return new Block(Long.parseLong(attrs[0]), Long.parseLong(attrs[1]), Integer.parseInt(attrs[2]), Integer.parseInt(attrs[3]), attrs[4], attrs[5])
+                        }
+                    }
+                    --nextend;
+                }
+                --nextend;
+                raf.seek(nextend);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     /**
@@ -181,7 +217,7 @@ public class LSMTree {
 
         try (RandomAccessFile raf = new RandomAccessFile(file, "rw")) {
             start = (int) raf.getFilePointer();
-            raf.write(bytes, start, len);
+            raf.write(bytes, start, len - Block.BLOCK_SPLIT_BYTE_SIZE);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -190,6 +226,17 @@ public class LSMTree {
     }
 
     private Block ioRead(String fileName, int start, int length) {
+        File file = new File(fileName);
+        byte[] bytes = new byte[length];
+        Block block = null;
+        try (RandomAccessFile raf = new RandomAccessFile(file, "rb")) {
+            raf.seek(start);
+            raf.read(bytes, start, length);
+            block = Block.rcoverFromBytes(bytes, ATTRIBUTE_SPLIT);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
+        return block;
     }
 }

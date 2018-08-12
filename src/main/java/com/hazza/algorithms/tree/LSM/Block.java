@@ -10,12 +10,17 @@ import java.io.Serializable;
  * Change log:
  */
 public class Block implements Serializable {
+    public final static char BLOCK_SPLIT = '\n';
+    public final static int BLOCK_SPLIT_BYTE_SIZE = 1;
+
     long crc;
     long time;
     int keySize;
     int valueSize;
     String key;
     String value;
+
+    public Block() {}
 
     public Block(long crc, long time, int keySize, int valueSize, String key, String value) {
         this.crc = crc;
@@ -26,6 +31,11 @@ public class Block implements Serializable {
         this.value = value;
     }
 
+    /**
+     * Convert Block object into bytes.
+     * @param attributeSplit The split of each attributes.
+     * @return Byte.
+     */
     public byte[] getBytes(String attributeSplit) {
         StringBuffer sb = new StringBuffer();
         sb.append(crc)
@@ -33,15 +43,27 @@ public class Block implements Serializable {
                 .append(attributeSplit).append(keySize)
                 .append(attributeSplit).append(valueSize)
                 .append(attributeSplit).append(key)
-                .append(attributeSplit).append(value);
+                .append(attributeSplit).append(value)
+                .append(BLOCK_SPLIT);
 
         return sb.toString().getBytes();
     }
 
+    /**
+     * Recover block object from bytes.
+     * @param bytes
+     * @param attributeSplit
+     * @return
+     */
     public static Block rcoverFromBytes(byte[] bytes, String attributeSplit) {
         String str = new String(bytes);
         String[] values = str.split(attributeSplit);
 
         return new Block(Long.parseLong(values[0]), Long.parseLong(values[1]), Integer.parseInt(values[2]), Integer.parseInt(values[3]), values[4], values[5]);
+    }
+
+    @Override
+    public String toString() {
+        return "[" + key + ", " + value + "]";
     }
 }
