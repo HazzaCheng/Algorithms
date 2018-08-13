@@ -59,7 +59,7 @@ public class Block implements Serializable {
         String str = new String(bytes);
         String[] values = str.split(attributeSplit);
 
-        return new Block(Long.parseLong(values[0]), Long.parseLong(values[1]), Integer.parseInt(values[2]), Integer.parseInt(values[3]), values[4], values[5]);
+        return new Block(Long.parseLong(values[0].trim()), Long.parseLong(values[1].trim()), Integer.parseInt(values[2].trim()), Integer.parseInt(values[3].trim()), values[4].trim(), values[5].trim());
     }
 
     @Override

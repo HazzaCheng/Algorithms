@@ -23,11 +23,7 @@ public class KVTuple implements Comparable<KVTuple> {
 
     @Override
     public int compareTo(KVTuple kvTuple) {
-        if (kvTuple.key.equals(this.key)) {
-            return this.key.compareTo(kvTuple.key);
-        } else {
-            return this.value.compareTo(kvTuple.value);
-        }
+        return this.key.compareTo(kvTuple.key);
     }
 
     @Override
